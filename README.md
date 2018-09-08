@@ -9,6 +9,8 @@
 
 * After terraform done ssh to Kops server then install HELM
 
+Note: If you cannot apply state to S3 please check the instance profile under EC2 then attached the new policy for S3
+
 **********************************
 
 # Prerequisite for K8S deployment
