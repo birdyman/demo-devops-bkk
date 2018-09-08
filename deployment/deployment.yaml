@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-pod
+  namespace: test-echo-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-pod
+  template:
+    metadata:
+      labels:
+        app: echo-pod
+    spec:
+      containers:
+      - name: echoheaders
+        image: k8s.gcr.io/echoserver:1.10
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-pod
+  namespace: test-echo-pod
+spec:
+  selector:
+    app: echo-pod
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+  targetPort: 8080
+  resources:
+    limits:
+      memory: "1000Mi"
+      cpu: "0.1"
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: echo-pod
+  namespace: test-echo-pod
+  labels:
+    app: echo-pod
+    product: virtualbranch
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: demo-devops.qualint.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: echo-pod
+          servicePort: 8080
