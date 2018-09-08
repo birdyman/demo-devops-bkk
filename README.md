@@ -16,7 +16,7 @@ Note: If you cannot apply state to S3 please check the instance profile under EC
 # Prerequisite for K8S deployment
 
 * Create name space "test-echo-pod"
-** kubectl apply -f deployment.yaml
+* kubectl apply -f deployment.yaml
 
 **********************************
 
