@@ -1,0 +1,26 @@
+
+kops create cluster 
+--cloud=aws 
+--master-zones=ap-southeast-1a,ap-southeast-1b,ap-southeast-1c 
+--zones=ap-southeast-1a,ap-southeast-1b,ap-southeast-1c 
+--topology private 
+--node-size=t2.medium 
+--master-size=m4.large 
+--master-volume-size=150 
+--node-count=3 
+--cloud-labels "Environment=nonprod,Component=kubernetes" 
+--image="aws-marketplace/CentOS Linux 7 x86_64 HVM EBS 1708_11.01-b7ee8a69-ee97-4a49-9e68-afaee216db2e-ami-95096eef.4" 
+--kubernetes-version=[K8S-VERSION] 
+--vpc=[VPC-ID] 
+--network-cidr=172.16.0.0/16 
+--subnets=[SUBNET-ID-FOR-WORKER-PRIVATE-ZONE] 
+--utility-subnets=[SUBNET-ID-FOR-DMZ-ZONE] 
+--networking=calico 
+--dns private 
+--api-loadbalancer-type internal 
+--admin-access=192.168.0.0/16 
+--ssh-access=172.16.0.0/16,172.17.20.0/24 
+--ssh-public-key="[PATH-TO-PUBLIC-KEY-GENERATE-FROM-PEM-FILE]" 
+--encrypt-etcd-storage 
+--name=nonprod.demo.cloud 
+--state=s3://[S3-BUCKET-TO-STORE-STATE]
