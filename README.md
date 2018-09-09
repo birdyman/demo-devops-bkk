@@ -6,10 +6,10 @@
 
 terraform.tfvar
 - fill AccessKey and SecretKey
-  access_key  = "[AccessKey]"
-  secret_key  = "[SecretKey]"
+  - access_key  = "[AccessKey]"
+  - secret_key  = "[SecretKey]"
 - fill 
-  route53_private_id = "[R53-ZONE-ID]"
+  - route53_private_id = "[R53-ZONE-ID]"
 **********************************
 
 # Prerequisite for Kops
