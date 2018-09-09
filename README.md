@@ -18,6 +18,8 @@ terraform.tfvar
 
 Note: If you cannot apply state to S3 please check the instance profile under EC2 then attached the new policy for S3
 
+* Use kops-parameter to create K8S cluster
+
 **********************************
 
 # Prerequisite for K8S deployment
