@@ -29,5 +29,16 @@ Note: If you cannot apply state to S3 please check the instance profile under EC
 
 **********************************
 
+# Install Monitor and ingress via HELM
+
+helm install  stable/nginx-ingress --name nginx-ingress --namespace nginx-ingress
+
+helm repo add coreos https://s3-eu-west-1.amazonaws.com/coreos-charts/stable/
+helm install coreos/prometheus-operator --name prometheus-operator --namespace monitoring
+helm install coreos/kube-prometheus --name kube-prometheus --set global.rbacEnable=true --namespace monitoring
+
+Note: Aditional configuration for Prometheus and Ingress nginx please checkout more on chart
+**********************************
+
 email : phuwadon.potithong@gmail.com
 facaebook : https://www.facebook.com/phuwadon.potithong
